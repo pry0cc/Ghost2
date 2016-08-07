@@ -1,0 +1,4 @@
+#!/bin/bash
+
+## The IP corresponds with the server running transmission-daemon
+transmission-remote 192.168.0.28 -l | awk '{ print $13 }' | sed ':a;N;$!ba;s/\n/ /g'

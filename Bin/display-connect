@@ -1,0 +1,27 @@
+#!/usr/bin/env perl
+
+use strict;
+use warnings;
+
+my $LVD = `xrandr | grep "LVDS1 connected"`;
+my $HDMI1 = `xrandr | grep "HDMI1 connected"`;
+my $DP1 = `xrandr | grep "DP1 connected"`;
+
+if ($HDMI1) {
+	`xrandr --output HDMI1 --auto --right-of LVDS1`;
+	`/home/pry/.fehbg`;
+	`xrandr --output LVDS1 --auto --right-of HDMI1`;
+} else {
+	`xrandr --output HDMI1 --off`;
+	`/home/pry/.fehbg`;
+} 
+
+if ($DP1) {
+	`xrandr --output DP1 --auto --left-of LVDS1`;
+	`/home/pry/.fehbg`;
+} else {
+	`xrandr --output DP1 --off`;
+	`/home/pry/.fehbg`;
+	`xrandr --output LVDS1 --auto`
+}
+

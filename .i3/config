@@ -1,0 +1,378 @@
+
+    ### pry0cc - config; late 2014
+    ## ( Originally okubax 2014;i3 config file )
+
+    # TOGGLE FLOATING / TILING
+    #bindsym Mod4+SHIFT+t floating toggle
+
+    ## New window default borde
+
+    # new_window 1pixel
+    new_window pixel 1
+
+    #new_float 1pixel
+    new_float pixel 1
+
+    # font for window titles. ISO 10646 = Unicode
+    font pango:Droid Sans 9.3px
+    #font :Terminus: 2px
+
+    # Use Mouse+Mod4 to drag floating windows to their wanted position
+    floating_modifier Mod4
+
+    # Back and Forth
+    workspace_auto_back_and_forth yes
+
+    # kill focused window
+    bindsym Mod4+q kill
+
+    # start dmenu (a program launcher)
+    #bindsym Mod4+p exec --no-startup-id "j4-dmenu-desktop --dmenu='dmenu -i -b -fn '-*-profont-*-*-*-*-11-*-*-*-*-*-*-*''"
+    bindsym Mod4+Return exec --no-startup-id dmenu_path_c | dmenu_run -b  -fn '-*-terminus-*-*-*-*-12-*-*-*-*-*-*-*' -nb '#111111' -nf '#999999' -sb '#2D2D2D' -sf '#FFFFFF' | zsh
+
+    # CHANGING BORDER STYLE
+    bindsym Mod4+t border normal
+    bindsym Mod4+y border 1pixel
+    bindsym Mod4+u border none
+
+    # ASSIGN WORKSPACE VARIABLES1
+    set $WS0 0pry@GHOST
+    set $WS1 "1 TERM "
+    set $WS2 "2  WEB "
+    set $WS3 "3  CODE "
+    set $WS4 "4 RANGER "
+    set $WS5 "5 NCMPCPP "
+    set $WS6 "6 NET"
+    set $WS7 "7 SSH"
+    set $WS8 "8 IRC "
+    set $WS9 "9 9 "
+
+    # WINDOW CONTROL
+    # Float
+    ## Float everything
+    #for_window [class="[.]*"] floating enable
+    #for_window [class=""] floating enable
+    for_window [class="Transmission-gtk"] floating enable
+    for_window [class="feh|Eog|Mirage"] floating enable, border normal
+    for_window [title="Preferences|Xfce-notifyd"] floating enable
+    for_window [title="File Operation Progress" class="Thunar"] floating enable
+    for_window [title="Share a link on Twitter - Mozilla Firefox" class="Firefox"] floating enable
+    # for_window [title="Ncmpcpp"] floating toggle, move container to workspace $WS5
+    for_window [title="cd ~/Documents/VPN && sudo openvpn se.openvpn.frootvpn.ovpn"] move container to workspace $WS6
+    for_window [title="Press This - Mozilla Firefox" class="Firefox"] floating enable
+    for_window [title="Share a link on Twitter - Mozilla Firefox" class="Firefox"] floating enable
+    for_window [title="clone-backend"] floating enable
+
+    # browser pop-ups
+    for_window [window_role="pop-up"] floating enable,move absolute center
+
+    ## Move to workspace
+    assign [class="Firefox"] $WS2
+    assign [class="Atom"] $WS3
+    assign [class="ranger"] $WS4
+    assign [class="Thunar"] $WS4
+    assign [class="ncmpcpp"] $WS5
+    assign [title="mount-check"] $WS4
+    assign [title="mosh"] $WS7
+    assign [class="irssi"] $WS8
+    #assign [title="mpv"] $WS4
+    bindsym Mod1+W [class="Firefox"] focus
+    bindsym Mod1+E [class="Atom"] focus
+    bindsym Mod1+N [class="ncmpcpp"] focus
+
+
+    # Screenshot
+    bindsym Mod4+XF86PowerOff exec scrot
+
+    ## SCRATCHPAD
+
+    bindsym Shift+Mod4+i move scratchpad
+    bindsym Shift+Mod4+underscore scratchpad show
+
+    ## KEY BINDINGS
+    bindsym Mod4+Tab focus right
+
+    # HANDLE POPUPS
+    popup_during_fullscreen smart
+
+
+    # change focus
+    bindsym Mod4+h focus left
+    bindsym Mod4+j focus down
+    bindsym Mod4+k focus up
+    bindsym Mod4+l focus right
+
+    # move focused window
+    bindsym Mod4+Shift+H move left
+    bindsym Mod4+Shift+J move down
+    bindsym Mod4+Shift+K move up
+    bindsym Mod4+Shift+L move right
+
+    # Floating organisation
+    bindsym Shift+Mod4+Left floating toggle, move up 130, move left 250
+    bindsym Shift+Mod4+Right floating toggle, move down 130, move right 250
+
+
+
+    # split in horizontal orientation
+    bindsym Mod4+plus split h
+
+    # split in vertical orientation
+    bindsym Mod4+underscore split v
+
+    # enter fullscreen mode for the focused container
+    bindsym Mod4+f fullscreen
+
+    # change container layout (stacked, tabbed, default)
+    bindsym Mod4+s layout stacking
+    bindsym Mod4+x layout tabbed
+    bindsym Mod4+z layout default
+
+    # toggle tiling / floating
+    bindsym Mod4+Shift+space floating toggle
+
+    # change focus between tiling / floating windows
+    bindsym Mod4+space focus mode_toggle
+
+    # focus the parent container
+    bindsym Mod4+a focus parent
+
+    # focus the child container
+    bindsym Mod4+d focus child
+
+    # switch to workspace
+    bindsym Mod4+1 workspace $WS1
+    bindsym Mod4+2 workspace $WS2
+    bindsym Mod4+3 workspace $WS3
+    bindsym Mod4+4 workspace $WS4
+    bindsym Mod4+5 workspace $WS5
+    bindsym Mod4+6 workspace $WS6
+    bindsym Mod4+7 workspace $WS7
+    bindsym Mod4+8 workspace $WS8
+    bindsym Mod4+9 workspace $WS9
+    bindsym Mod4+0 workspace $WS0
+
+    # move focused container to workspace
+    bindsym Mod4+Shift+exclam move container to workspace $WS1
+    bindsym Mod4+Shift+at move container to workspace $WS2
+    bindsym Mod4+Shift+3 move container to workspace $WS3
+    bindsym Mod4+Shift+dollar move container to workspace $WS4
+    bindsym Mod4+Shift+percent move container to workspace $WS5
+    bindsym Mod4+Shift+asciicircum move container to workspace $WS6
+    bindsym Mod4+Shift+ampersand move container to workspace $WS7
+    bindsym Mod4+Shift+asterisk move container to workspace $WS8
+    bindsym Mod4+Shift+parenleft move container to workspace 9
+    bindsym Mod4+Shift+parenright move container to workspace 10
+
+    # reload the configuration file
+    # bindsym Mod4+Shift+C reload
+    # restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
+    bindsym Mod4+Shift+R restart
+    # exit i3 (logs you out of your X session)
+    bindsym Mod4+Shift+Q exit
+
+    # resize window (you can also use the mouse for that)
+    mode "  " {
+            # These bindings trigger as soon as you enter the resize mode
+
+            bindsym h resize shrink width 10 px or 10 ppt
+            bindsym j resize grow height 10 px or 10 ppt
+            bindsym k resize shrink height 10 px or 10 ppt
+            bindsym l resize grow width 10 px or 10 ppt
+            # arrow keys #
+            # bindsym 113 right
+    #        bindsym 116 up
+    #        bindsym 111 left
+    #        bindsym 114 down
+
+            bindsym Mod4+l resize shrink width 1 px or 1 ppt
+            bindsym Mod4+j resize grow height 1 px or 1 ppt
+            bindsym Mod4+k resize shrink height 1 px or 1 ppt
+            bindsym Mod4+h resize grow width 1 px or 1 ppt
+
+            # back to normal: Enter or Escape
+            bindsym Return mode "default"
+            bindsym Escape mode "default"
+    }
+
+    bindsym Mod4+r mode "  "
+
+    #EXAMPLE USING THE i3 bar
+    # Create Log out, Reboot, Poweroff bindings
+
+    set $mode_system System (l) lock, (e) logout, (s) suspend, (h) hibernate, (r) reboot, (Shift+s) shutdown
+    mode "$mode_system" {
+        bindsym l exec --no-startup-id $HOME/Bin/i3lock-ext, mode "default"
+        bindsym e exec --no-startup-id $HOME/Bin/i3exit logout, mode "default"
+        bindsym s exec --no-startup-id $HOME/Bin/i3exit suspend, mode "default"
+        bindsym h exec --no-startup-id $HOME/Bin/i3exit hibernate, mode "default"
+        bindsym r exec --no-startup-id $HOME/Bin/i3exit reboot, mode "default"
+        bindsym Shift+s exec --no-startup-id $HOME/Bin/i3exit shutdown, mode "default"
+
+        # back to normal: Enter or Escape
+        bindsym Return mode "default"
+        bindsym Escape mode "default"
+    }
+
+    bindsym XF86PowerOff mode "$mode_system"
+    #bindsym XF86PowerOff exec urxvt
+
+    # colors
+    #class                  border   backgr.  text  indicator
+    client.focused          #2D2D2D #424242 #cad0c4 #cad0c4
+    client.focused_inactive #2D2D2D #151515 #2D2D2D
+    client.unfocused        #222222 #151515 #605e56
+    client.urgent           #a5a5a5 #a5a5a5 #1E1E1E
+    client.background       #161616
+
+    ###  ADDED KEY BINDINGS  ###
+    bindsym Mod4+SHIFT+f exec termite --class ranger -e ranger
+    bindsym Mod4+SHIFT+w exec firefox
+    #bindsym w exec firefox
+    bindsym Mod4+e exec atom
+    bindsym Mod4+i exec termite
+    bindsym Mod4+g exec $HOME/Bin/nmcli_dmenu
+    bindsym Mod4+SHIFT+n exec termite --class ncmpcpp -e ncmpcpp
+    bindsym Mod4+Shift+d exec termite --class irssi -e irssi
+    bindsym Mod1+i exec termite -e sudo -s
+    bindsym Mod1+o exec termite -e $(echo "" | dmenu)
+    bindsym Mod4+m exec mount-dmenu
+    bindsym Mod4+Shift+m exec /home/pry/Bin/movie_selector
+    bindsym Shift+Mod4+b exec killall $(ps cax | awk '{ print $5 }' | dmenu  -b  -fn '-*-terminus-*-*-*-*-12-*-*-*-*-*-*-*' -nb '#111111' -nf '#999999' -sb '#2D2D2D' -sf '#FFFFFF' )
+
+    bindsym Mod1+Return exec scrot -e 'mv $f ~/Pictures/Screenshots'
+    bindsym Mod4+Shift+c exec xsel && ~/Bin/clone
+    bindsym Mod1+Shift+i exec "termite -e ipboard"
+    bindsym Mod4+c exec xsel | xsel -b
+    bindsym Mod4+v exec xsel -o
+
+    bindsym Mod1+XF86LaunchA exec killall firefox, exec killall atom, exec killall ranger, exec killall ncmpcpp
+
+    bindsym Mod4+SHIFT+P exec /home/pry/Bin/display-connect
+
+    bindsym Mod4+Shift+greater move workspace to output right
+    bindsym Mod4+Shift+less move workspace to output left
+
+    # VOLUME ADJUSTMENT
+    #bindsym XF86AudioRaiseVolume exec "pactl set-sink-volume 0 -- +2%"
+    #bindsym XF86AudioLowerVolume exec "pactl set-sink-volume 0 -- -2%"
+    bindsym XF86AudioMute exec "amixer sset Master toggle"
+    #bindsym XF86AudioRaiseVolume exec "amixer set Master 2.0%+"
+    #bindsym XF86AudioLowerVolume exec "amixer set Master 2.0%-"
+    bindsym XF86AudioRaiseVolume exec "$HOME/Bin/volo2 up"
+    bindsym XF86AudioLowerVolume exec "$HOME/Bin/volo2 down"
+
+    # MPD CONTROLS
+    bindsym XF86AudioPlay exec "mpc toggle"
+    bindsym Mod4+XF86AudioPlay workspace $WS5
+    bindsym XF86AudioNext exec "mpc next"
+    bindsym XF86AudioPrev exec "mpc prev"
+
+    bindsym Shift+Mod4+G exec termite -e $HOME/Bin/google-ping
+    bindsym Shift+Mod1+S exec urxvt -e mosh --ssh="ssh -p 81" root@server
+    bindsym Shift+Mod4+S exec urxvt -e mosh --ssh="ssh -p 81" root@server tmux attach
+    bindsym Mod1+S exec xsel -o | dmenu -fn '-*-terminus-*-*-*-*-12-*-*-*-*-*-*-*' -nb '#111111' -nf '#999999' -sb '#2D2D2D' -sf '#FFFFFF' -p DmenuDmenuGo: | xargs -I {} firefox -new-tab duckduckgo.com/\?q={}
+
+    # WALLPAPER
+    bindsym XF86LaunchA exec exec urxvt -e ncmpcpp, exec atom, exec firefox, exec urxvt -e ranger
+
+    # BRIGHTNESS
+    bindsym XF86MonBrightnessUp exec "$HOME/Bin/backer up"
+    bindsym XF86MonBrightnessDown exec "$HOME/Bin/backer down"
+    bindsym XF86LaunchB width 86px, height 10px
+
+    # KEYBOARD BACKLIGHT
+    bindsym XF86KbdBrightnessUp exec "$HOME/Bin/kbdbar up"
+    bindsym XF86KbdBrightnessDown exec "$HOME/Bin/kbdbar down"
+
+    # Start i3bar to display a workspace bar (plus the system information i3status
+    # finds out, if available)
+    bar {
+            output LVDS1
+            status_command ~/.i3/conky/conky
+            tray_output none
+            strip_workspace_numbers yes
+            position top
+            mode dock
+    #       font pango:fixed 6
+            font pango:Terminus 13px
+    #       font -*-profont-*-*-*-*-4-*-*-*-*-*-*-*, Icons 10px
+    # 	    font pango:profont 11px, Icons 10px
+    #       font pango:Consolas Bold 19px
+    # 	    font pango:Icons 10px
+
+    colors {
+                    background #151515
+                    statusline #2D2D2D
+
+
+                    # class            border  backgrd text
+                    focused_workspace  #2D2D2D #2D2D2D #ffffff
+                    active_workspace   #2D2D2D #2D2D2D #cad0c4
+                    urgent_workspace   #2d2d2d #2d2d2d #cad0c4
+                    inactive_workspace #1E1E1E #1E1E1E #605e56
+            }
+    }
+
+    bar {
+            output DP1
+            status_command ~/.i3/conky/conky-dp1
+            tray_output none
+            strip_workspace_numbers yes
+            position top
+            mode dock
+    #       font pango:fixed 6
+            font pango:Terminus 13px
+    #       font -*-profont-*-*-*-*-4-*-*-*-*-*-*-*, Icons 10px
+    #       font pango:profont 11px, Icons 10px
+    #       font pango:Consolas Bold 19px
+    #       font pango:Icons 10px
+
+    colors {
+                    background #161616
+                    statusline #2D2D2D
+    # class                            border  backgrd text
+                    focused_workspace  #2D2D2D #2D2D2D #ffffff
+                    active_workspace   #2D2D2D #2D2D2D #cad0c4
+                    inactive_workspace #161616 #1E1E1E #605e56
+                    urgent_workspace   #2d2d2d #2d2d2d #cad0c4
+            }
+    }
+    bar {
+            output HDMI1
+            status_command ~/.i3/conky/conky-hdmi1
+            tray_output none
+            strip_workspace_numbers yes
+            position top
+            mode dock
+    #       font pango:fixed 6
+            font pango:Terminus 13px
+    #       font -*-profont-*-*-*-*-4-*-*-*-*-*-*-*, Icons 10px
+    #       font pango:profont 11px, Icons 10px
+    #       font pango:Consolas Bold 19px
+    #       font pango:Icons 10px
+
+    colors {
+                    background #161616
+                    statusline #2D2D2D
+    # class                            border  backgrd text
+                    focused_workspace  #2D2D2D #2D2D2D #ffffff
+                    active_workspace   #2D2D2D #2D2D2D #cad0c4
+                    inactive_workspace #161616 #1E1E1E #605e56
+                    urgent_workspace   #2d2d2d #2d2d2d #cad0c4
+            }
+    }
+
+
+    ## BACKGROUND OPTIONS (STARTED IN .XINITRC)
+
+    # AUTOSTART
+    exec --no-startup-id nitrogen --restore
+    # exec compton -cCGfF -o 0.38 -O 0.03 -I 0.03 -t 0 -l 0 -r 3 -D2 -m 0.88
+    exec compton
+    # exec mpd /home/pry/.config/mpd/mpd.conf
+    exec mopidy &
+    exec kbdlight set 16
+    exec /home/pry/Bin/display-connect
+    exec devmon &
+    exec xrdb ~/.Xresources

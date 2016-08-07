@@ -1,0 +1,64 @@
+background        no
+out_to_console 	  yes
+out_to_x	  no
+update_interval	  1
+total_run_times	  0
+short_units	  yes
+pad_percents	  3
+
+override_utf8_locale yes
+
+TEXT
+,[
+
+
+#{"full_text": ${if_mpd_playing} "", "separator": false},
+#{"full_text": "${mpd_artist 20} - ${mpd_title 30}             ","color":"\#1793D1", "separator": false},
+#$else""},$endif
+
+{"full_text":" ${execpi 1 perl /home/pry/Bin/mpd.pl}", "color":"\#cad0c4", "separator":false},\
+
+# Packages
+{"full_text":"UPD","color":"\#b8b8b8", "separator":false, "separator_block_width":3},\
+{"full_text":" ${execpi 3600 checkupdates | wc -l}", "color":"\#1793D1", "separator":false},\
+
+# SSID
+{"full_text":"","color":"\#b8b8b8", "separator":false },\
+${if_up wlp3s0b1}{"full_text": "${wireless_essid wlp3s0b1} [${wireless_link_qual_perc wlp3s0b1}%]","color":"\#1793D1", "separator": false},
+
+# Volume
+{"full_text":" ","color":"\#b8b8b8","separator":false,"separator_block_width":6},\
+{"full_text":"${execi 1 pamixer --get-volume}%","color":"\#1793D1","separator":false},
+
+# Memory:
+{"full_text":"MEM","color":"\#b8b8b8","separator":false,"separator_block_width":6},\
+{"full_text":"${if_match ${memperc}<30}${mem}","color":"\#909737","separator":false,"separator_block_width":6},\
+#{"full_text":"${else}"},\
+{"full_text":"${if_match ${memperc}<70}${mem}","color":"\#DC9656","separator":false,"separator_block_width":6},\
+{"full_text":"${else}"},\
+{"full_text":"${if_match ${memperc}>=70}${mem}","color":"\#AB4642","separator":false,"separator_block_width":6},\
+{"full_text":"${endif}${endif}${endif}"},\
+
+# CPU Usage
+{"full_text":"","color":"\#b8b8b8","separator":false,"separator_block_width":6},\
+{"full_text":"${if_match ${cpu}<15}${cpu}%","color":"\#1793D1","separator":false,"sepi3arator_block_width":6},\
+{"full_text":"${else}"},
+{"full_text":"${if_match ${cpu}<55}${cpu}%","color":"\#DC9656","separator":false,"separator_block_width":6},\
+{"full_text":"${else}"},\
+{"full_text":"${if_match ${cpu}>=75}${cpu}%","color":"\#AB4642","separator":false,"separator_block_width":6},\
+{"full_text":"${else}"},\
+{"full_text":"${endif}${endif}${endif}"},\
+
+# Battery
+{"full_text":"BAT","color":"\#b8b8b8","separator":false,"separator_block_width":6},\
+{"full_text":"${if_match ${battery_percent}<30}${battery_percent}%","color":"\#AB4642","separator":false,"separator_block_width":6},\
+{"full_text":"${else}"},\
+{"full_text":"${if_match ${battery_percent}<70}${battery_percent}%","color":"\#DC9656","separator":false,"separator_block_width":6},\
+{"full_text":"${else}"},\
+{"full_text":"${if_match ${battery_percent}>=70}${battery_percent}%","color":"\#1793D1","separator":false,"separator_block_width":6},\
+{"full_text":"${endif}${endif}${endif}"},
+
+# Time
+
+{"full_text":"${time %H:%M:%S}","color":"\#B8B8B8","separator":false}
+]

@@ -1,0 +1,8 @@
+#!/bin/bash
+
+url_stat=$(xsel | nc termbin.com 9999)
+if [ $url_stat ];
+	then
+	echo $url_stat >> $HOME/Bin/termbin
+	firefox $url_stat
+fi

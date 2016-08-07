@@ -1,0 +1,30 @@
+#!/usr/bin/env ruby
+
+require 'json'
+require 'mechanize'
+require 'rubygems'
+require 'open-uri'
+
+puts "Looking up #{ARGV[0]}"
+
+agent = Mechanize.new
+agent.user_agent = "curl/7.50.0"
+data = agent.get("http://freegeoip.net/json/#{ARGV[0]}").body
+
+json = JSON.parse(data)
+weather = agent.get("http://wttr.in/#{json["city"]}").body.split("\n")
+puts "Country Code: " + json["country_code"]
+puts "Country: " + json["country_name"]
+puts "Region Code: " + json["region_code"]
+puts "Region Name: " + json["region_name"]
+puts "City: " + json["city"]
+puts "Zip Code: " + json["zip_code"]
+puts "Time Zone: " + json["time_zone"]
+puts "Local Time: " + `TZ="#{json["time_zone"]}" date`
+puts "Metro Code: " + json["metro_code"].to_s
+puts "Google Maps: https://www.google.com/maps?z=12&t=m&q=loc:#{json["latitude"]}+#{json["longitude"]}"  
+
+puts "Weather right now: "
+puts weather[1..6]
+puts ""
+sleep 1000

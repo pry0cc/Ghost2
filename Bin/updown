@@ -1,0 +1,6 @@
+#!/bin/bash
+
+
+sudo ip link set wlp3s0b1 down
+$2
+sudo ip link set wlp3s0b1 up

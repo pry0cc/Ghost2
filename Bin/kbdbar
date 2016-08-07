@@ -1,0 +1,21 @@
+#!/bin/bash
+
+PIPE="/tmp/kbd_pipe"
+KBD=$(kbdlight get)
+
+if [ ! -e "$PIPE" ]; then
+    mkfifo "$PIPE"
+    (dzen2 -xs 1 -w 530 -h 30 -y 18 -x 374 < "$PIPE") &
+fi
+
+if [ $1 ]; then
+    if [ $1 = up ]; then
+        kbdlight up
+    elif [ $1 = down ]; then
+        kbdlight down
+    fi
+fi
+
+(echo $KBD | gdbar -max 255 -w 500 ; sleep 1) > $PIPE &
+
+rm $PIPE

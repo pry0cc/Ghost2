@@ -1,0 +1,50 @@
+rename logo.jph
+rename logo.jpg
+mkdir OzzyAssets
+rename Beardyman - I Done A Album
+se
+open_with mpv
+deletey
+mkdir Movies
+rename Deja Vu (2006)
+rename deja
+rename DejaVU.mkv
+rename DejaVu.mkv
+rename J. Cole - Born Sinner (Deluxe Version)
+mkdir Cracker
+rename 03 Dolo (feat. R. Kelly).mp3
+rename The Lone Ranger.mkv
+rename The Office (UK) Series 1 + 2 Christmas Specials And Extras
+rename The Office - S01E1 - Downsize .avi
+rename The Office - S01E01 - Downsize .avi
+rename The Office - S01E02 - Work Experience.avi
+rename The Office - S01E06 - Judgement.nfo
+rename The Office - S01E06 - Judgement.avi
+rename The Office - S01E06 - Judgement-thumb.jpg
+rename The Office - S01E05 - New Girl.avi
+rename The Office - S01E04 - Training.avi
+rename The Office - S01E03 - The Quiz.nfo
+rename The Office - S01E03 - The Quiz.avi
+rename The Office - S01E03 - The Quiz-thumb.jpg
+rename The Office - S02E01 - Merger.avi
+rename The Office - S02E06 - Interview.avi
+rename The Office - S02E05 - Charity.avi
+rename The Office - S02E04 - Motivation.nfo
+rename The Office - S02E04 - Motivation.avi
+rename The Office - S02E04 - Motivation-thumb.jpg
+rename The Office - S02E03 - Party.avi
+rename The Office - S02E02 - Appraisals.nfo
+rename The Office - S02E02 - Appraisals.avi
+rename The Office - S02E02 - Appraisals-thumb.jpg
+rename Stevie Wonder - Definitive Greatest Hits 
+rename Stevie Wonder - Definitive Greatest Hits
+rename The-HatefulEight2015.avi
+rename The.Hateful.Eight.2015.DVDSCR.avi
+rename G-Eazy - When It's Dark Out (Explicit) 
+rename Kid CuDi-Man On The Moon The End Of Day
+rename Fabolous - The Young OG Project
+rename 2016-05-02-Man-In-The-Middle-Attackl-Introduction.markdown
+
+delete
+open_with vim
+open_with 

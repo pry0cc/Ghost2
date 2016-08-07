@@ -1,0 +1,21 @@
+#!/bin/bash
+
+PIPE="/tmp/backlightpipe"
+BACKLIGHT=$(xbacklight -get | sed 's/\./ /g' | awk '{ print $1 }')
+
+if [ ! -e "$PIPE" ]; then
+    mkfifo "$PIPE"
+    (dzen2 -xs 1 -w 530 -h 30 -y 18 -x 374 < "$PIPE") &
+fi
+
+if [ $1 ]; then
+    if [ $1 = up ]; then
+        xbacklight -inc 10%
+    elif [ $1 = down ]; then
+        xbacklight -dec 10%
+    fi
+fi
+BACKLIGHT=$(xbacklight -get | sed 's/\./ /g' | awk '{ print $1 }')
+(echo $BACKLIGHT | gdbar -w 500 ; sleep 1) > $PIPE &
+
+rm /tmp/backlightpipe
